@@ -10,8 +10,7 @@
       "createdAt": "2025-11-01T00:00:00Z",
       "updatedAt": null,
       "tags": [],
-
-      "reminder": null
+      "reminder": "true"
     }
   ]
 }
