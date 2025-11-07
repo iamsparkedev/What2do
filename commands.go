@@ -1,13 +1,23 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"os"
+)
 
 func handleAddTask(task string) {
-	fmt.Printf("Task added: %s\n", task)
+	defer fmt.Printf("Task added: %s\n", task)
+	file,_ := os.Create("task.txt")
+	defer file.Close()
+
 }
 
 func handleListTasks() {
-	fmt.Println("Listing all tasks...")
+	fmt.Println("Listing all tasks...waiting for implementation")
+	file,_ := os.Open("tasks.json")
+	defer file.Close()
+	read,_ := os.ReadFile("tasks.json")
+	fmt.Println(string(read))
 }
 
 func handleDeleteTask(taskID string) {

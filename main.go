@@ -52,3 +52,4 @@ func main() {
 	}
 }
 
+// learn how intereact with files in golang
