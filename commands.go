@@ -7,8 +7,7 @@ import (
 
 func handleAddTask(task string) {
 	defer fmt.Printf("Task added: %s\n", task)
-	file,_ := os.Create("task.txt")
-	defer file.Close()
+	
 
 }
 

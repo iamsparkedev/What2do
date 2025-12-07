@@ -7,6 +7,11 @@ import (
 
 // CLI TO-DO APP Without any external libraries
 func main() {
+	banner := "_  _  _  _   __  ____     ____      ____   __  \n" +
+"╱ )( ╲╱ )( ╲ ╱ _╲(_  _)___(___ ╲ ___(    ╲ ╱  ╲ \n" +
+"╲ ╱╲ ╱) __ (╱    ╲ )( (___)╱ __╱(___)) D ((  O )\n" +
+"(_╱╲_)╲_)(_╱╲_╱╲_╱(__)    (____)    (____╱ ╲__╱\n"
+
 
     defer fmt.Println("                     ")
     defer fmt.Println("=========================================================")
@@ -19,7 +24,8 @@ func main() {
 	defer fmt.Println("Let's get started!")
 	defer fmt.Println("You can add, view, and delete your tasks easily.")
 	defer fmt.Println("Welcome to What-2-Do, your simple CLI to-do application!")
-	defer fmt.Println("======================== WHAT-2-DO ======================")
+	defer fmt.Println("=========================================================")
+	defer fmt.Println(banner)
 	defer fmt.Println("                     ")
 
 	if len(os.Args) < 2 {
