@@ -16,11 +16,8 @@ func main() {
 	cmd := os.Args[1]
 	switch cmd {
 	case "add":
-		if len(os.Args) < 3 {
-			fmt.Println("Error: Please provide a task to add")
-			return
-		}
-		handleAddTask(os.Args[2])
+		addTask(Task{})
+		generateFileName()
 	case "list":
 		handleListTasks()
 	case "delete":
