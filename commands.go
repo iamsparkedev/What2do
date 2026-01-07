@@ -46,13 +46,30 @@ func addTask(t Task) {
 
 // Placeholder function for listing tasks
 func handleListTasks() {
-	fmt.Println("Listing all tasks...waiting for implementation")
-	file, err := os.Open("tasks.json")
+	Helpcmd()
+	readdir, err := os.ReadDir("./tmp/")
 	errorCheck(err)
-	defer file.Close()
-	read, err := os.ReadFile("tasks.json")
-	errorCheck(err)
-	fmt.Println(string(read))
+	if len(readdir) == 0 {
+		fmt.Println("No tasks found.")
+		return
+	}
+	fmt.Println("You have", len(readdir), "tasks.")
+	fmt.Println("=========================================================")
+	for _, entry := range readdir {
+        if entry.IsDir() {
+            continue
+        }
+
+        data, err := os.ReadFile("./tmp/" + entry.Name())
+        errorCheck(err)
+
+        fmt.Println(string(data))
+        fmt.Println("------------------------------")
+    }
+
+    fmt.Println("=========================================================")
+
+
 }
 
 func handleDeleteTask(taskID string) {
