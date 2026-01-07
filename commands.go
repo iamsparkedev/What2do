@@ -72,6 +72,36 @@ func handleListTasks() {
 
 }
 
-func handleDeleteTask(taskID string) {
-	fmt.Printf("Deleting task with ID: %s\n", taskID)
+func handleDeleteTask(s string) {
+	Helpcmd()
+	reader := bufio.NewReader(os.Stdin)
+	fmt.Print("Delete All Tasks ? : 1" + "\n" + "Delete Specific Task ? : 2" + "\n" + "Enter choice: ")
+	input, _ := reader.ReadString('\n')
+	input = strings.TrimSpace(input)
+	if input == "1" {
+		fmt.Println("Deleting all tasks...")
+		readdir, err := os.ReadDir("./tmp/")
+		if err != nil {
+			fmt.Println("Error reading tasks directory:", err)
+			return
+		}
+		for _, entry := range readdir {
+			if entry.IsDir() {
+				continue
+			}
+			err := os.Remove("./tmp/" + entry.Name())
+			errorCheck(err)
+		}
+		fmt.Println("All tasks deleted.")
+	} else {
+		fmt.Print("Enter the filename of the task to delete: ", s)
+		filename, _ := reader.ReadString('\n')
+		filename = strings.TrimSpace(filename)
+		err := os.Remove("./tmp/" + filename)
+		if err != nil {
+			fmt.Println("Can't find specified task"+"\n"+"Error deleting task:", err)
+			return
+		}
+		fmt.Println("Task", filename, "deleted.")
+	}
 }

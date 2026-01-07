@@ -21,11 +21,7 @@ func main() {
 	case "list":
 		handleListTasks()
 	case "delete":
-		if len(os.Args) < 3 {
-			fmt.Println("Error: Please provide a task ID to delete")
-			return
-		}
-		handleDeleteTask(os.Args[2])
+		handleDeleteTask("")
 	case "exit":
 		fmt.Println("Goodbye!")
 		return
